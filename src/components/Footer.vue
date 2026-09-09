@@ -1,7 +1,7 @@
 <template>
   <footer class="py-8 border-t border-slate-800/50 bg-slate-950">
     <div
-      class="container mx-auto px-6 text-center text-slate-500 text-sm font-mono flex flex-col md:flex-row justify-between items-center gap-4"
+      class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-slate-500 text-xs sm:text-sm font-mono flex flex-col md:flex-row justify-between items-center gap-4"
     >
       <div>
         &copy; {{ new Date().getFullYear() }} Venkateswarlu Tiruveedula. All rights reserved.

@@ -1,23 +1,25 @@
 <template>
-  <section id="tools" class="py-24 relative bg-slate-900/20">
-    <div class="container mx-auto px-6">
+  <section id="tools" class="py-12 md:py-16 relative bg-slate-900/20">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <motion.div
         :initial="{ opacity: 0, y: 30 }"
         :whileInView="{ opacity: 1, y: 0 }"
         :viewport="{ once: true }"
         :transition="{ duration: 0.6 }"
       >
-        <h2 class="text-3xl md:text-5xl font-orbitron mb-6 flex items-center gap-4">
+        <h2 class="text-2xl sm:text-3xl md:text-5xl font-orbitron mb-8 md:mb-10 flex items-center gap-4">
           <span class="text-blue-500">03.</span> Tools
           <div class="h-px bg-slate-800 flex-grow ml-4"></div>
         </h2>
-        <p class="max-w-2xl mr-auto text-left text-slate-400 leading-relaxed mb-14">
+        <p
+          class="max-w-2xl mr-auto text-left text-slate-400 leading-relaxed mb-8 md:mb-10 text-sm sm:text-base"
+        >
           A focused toolkit for building thoughtful interfaces, exploring new ideas, and bringing
           ambitious products to life.
         </p>
       </motion.div>
 
-      <div class="grid lg:grid-cols-2 gap-8">
+      <div class="grid lg:grid-cols-2 gap-6 md:gap-8">
         <motion.article
           v-for="(group, index) in toolGroups"
           :key="group.label"
@@ -41,7 +43,14 @@
                 {{ group.eyebrow }}
               </p>
               <h3 class="text-2xl md:text-3xl font-orbitron text-white flex items-center gap-2">
-                <Icon :icon="group.icon" :ssr="true" :class="['h-5 w-5', group.accent === 'purple' ? 'text-purple-400' : 'text-blue-500']" />
+                <Icon
+                  :icon="group.icon"
+                  :ssr="true"
+                  :class="[
+                    'h-5 w-5',
+                    group.accent === 'purple' ? 'text-purple-400' : 'text-blue-500',
+                  ]"
+                />
                 {{ group.label }}
               </h3>
             </div>
@@ -66,7 +75,7 @@
               :initial="{ opacity: 0, x: -12 }"
               :whileInView="{ opacity: 1, x: 0 }"
               :viewport="{ once: true }"
-              :transition="{ duration: 0.35, delay: groupIndex * 0.15 + toolIndex * 0.06 }"
+              :transition="{ duration: 0.35, delay: index * 0.15 + toolIndex * 0.06 }"
               :whileHover="{ x: 4 }"
               :class="[
                 'group/tool flex items-center gap-3 rounded-lg border bg-slate-950/40 px-4 py-3 transition-colors',

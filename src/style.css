@@ -2,6 +2,12 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* Custom breakpoint for large / 4K monitors (2560px+).
+   Use the `3xl:` prefix in any component, e.g. `3xl:text-8xl`. */
+@theme {
+  --breakpoint-3xl: 2560px;
+}
+
 @theme inline {
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
@@ -75,9 +81,29 @@
   * {
     @apply border-border;
   }
-  body {
-    @apply font-sans antialiased bg-background text-foreground;
+  html {
+    @apply overflow-x-hidden;
   }
+  body {
+    @apply font-sans antialiased bg-background text-foreground overflow-x-hidden;
+  }
+}
+
+/* Keep the page from ever stretching edge-to-edge on very large / 4K
+   monitors. Tailwind's `container` class already caps out at 1536px
+   (the 2xl breakpoint) and just centers after that, so this only
+   matters if you want a bit more breathing room specifically at 2560px+. */
+@media (min-width: 2560px) {
+  .container {
+    max-width: 1800px;
+  }
+}
+
+/* The nav bar is `fixed`, so clicking a #anchor link would otherwise
+   scroll each section flush under it, hiding the heading. This offsets
+   the scroll position by roughly the nav's height. */
+section[id] {
+  scroll-margin-top: 84px;
 }
 
 .glass-card {
@@ -120,14 +146,36 @@
 .typing-line {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
+  /* align-content: center;
+  flex-wrap: wrap;
+  row-gap: 4px;
+  column-gap: 7px; */
   width: max-content;
   max-width: 100%;
+  /* Reserve room for 2 lines up front. The typewriter text changes
+     length as it types, and without this the badge would snap from a
+     1-line to a 2-line height right as it finishes, jolting everything
+     below it down. Reserving the space means it never resizes — it
+     just centers whatever's currently in it. */
   margin-bottom: 12px;
   padding: 12px 18px;
+  box-sizing: border-box;
+  overflow: hidden; 
+  transition: height 0.35s ease-in-out;
 }
 
-.typing-line > span {
+.typing-content {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  row-gap: 4px;
+  max-width: 100%;
+    line-height: 1.4;
+
+}
+
+.typing-content > span {
   font-family: var(--app-font-orbitron);
   font-size: 0.78rem;
   font-weight: 700;

@@ -1,19 +1,21 @@
 <template>
-  <section id="experience" class="py-24 relative bg-slate-900/10">
-    <div class="container mx-auto px-6">
+  <section id="experience" class="py-12 md:py-16 relative bg-slate-900/10">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <motion.div
         :initial="{ opacity: 0, y: 30 }"
         :whileInView="{ opacity: 1, y: 0 }"
         :viewport="{ once: true }"
         :transition="{ duration: 0.6 }"
       >
-        <h2 class="text-3xl md:text-5xl font-orbitron mb-16 flex items-center gap-4 justify-end">
+        <h2
+          class="text-2xl sm:text-3xl md:text-5xl font-orbitron mb-8 md:mb-10 flex items-center gap-4 justify-end"
+        >
           <div class="h-px bg-slate-800 flex-grow mr-4"></div>
           Experience <span class="text-purple-500">.04</span>
         </h2>
       </motion.div>
 
-      <div class="relative border-l border-purple-500/30 ml-4 md:ml-8">
+      <div class="relative border-l border-purple-500/30 ml-2 sm:ml-4 md:ml-8">
         <motion.div
           v-for="(exp, index) in timeline"
           :key="index"
@@ -29,13 +31,15 @@
           ></div>
 
           <div
-            class="glass-card p-6 rounded-lg hover:border-purple-500/50! hover:shadow-[0_0_20px_rgba(139,92,246,0.4)] transition-colors duration-300"
+            class="glass-card p-4 sm:p-6 rounded-lg hover:border-purple-500/50! hover:shadow-[0_0_20px_rgba(139,92,246,0.4)] transition-colors duration-300"
           >
-            <div class="font-orbitron mb-2 flex justify-between">
-              <a :href="exp.link" target="_blank" class="text-xl font-medium text-purple-500"
+            <div
+              class="font-orbitron mb-2 flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-2"
+            >
+              <a :href="exp.link" target="_blank" class="text-lg sm:text-xl font-medium text-purple-500"
                 >@{{ exp.company }}</a
               >
-              <span class="text-slate-400 text-md">{{ exp.period }}</span>
+              <span class="text-slate-400 text-xs sm:text-md">{{ exp.period }}</span>
             </div>
             <!-- <span>{{ exp.period }}</span> -->
 
@@ -49,7 +53,7 @@
               ></span>
               <!-- Role content -->
               <div class="mb-3">
-                <div class="flex items-center gap-3 mb-2 font-mono">
+                <div class="flex flex-wrap items-center gap-x-3 gap-y-1 mb-2 font-mono">
                   <h4 :class="['text-lg font-medium', exp.roles.length === 1 ? 'animate-pulse' : '']">
                     {{ role.designation }}
                   </h4>

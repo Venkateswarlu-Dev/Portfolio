@@ -2,8 +2,7 @@
   <div class="hero-animation">
     <div class="hand-container">
       <img src="/image.png" class="hand" alt="Hand" />
-      <div class="energy-dot">
-      </div>
+      <div class="energy-dot"></div>
 
       <div class="atom-wrapper">
         <div class="energy-point"></div>
@@ -363,7 +362,11 @@ function animateNodesToOrbit() {
 .hero-animation {
   position: relative;
   width: 100%;
-  height: 100vh;
+  /* Mobile/tablet: the hero stacks vertically (text above, animation
+     below), so this only needs enough height to show the animation
+     itself — not a full screen's worth. */
+  height: 60vh;
+  min-height: 320px;
   overflow: hidden;
 }
 
@@ -371,8 +374,86 @@ function animateNodesToOrbit() {
   position: absolute;
   right: 0;
   bottom: 0;
+  width: min(420px, 75vw);
+}
 
-  width: min(700px, 55vw);
+/* @media (max-width: 480px) {
+  .hero-animation {
+    height: 42vh;
+    min-height: 280px;
+  }
+
+  .hand-container {
+    width: min(340px, 85vw);
+  }
+
+  .atom-wrapper {
+    left: auto;
+    top: auto;
+    right: -10%;
+    bottom: 8%;
+    transform: scale(0.55);
+  }
+} */
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .hero-animation {
+    width: 100%;
+    height: 420px;
+    overflow: hidden;
+  }
+
+  .hand-container {
+    position: absolute;
+    left: 50%;
+    right: auto;
+    bottom: 0;
+    width: min(420px, 90vw);
+    transform: translateX(-50%);
+  }
+
+  .atom-wrapper {
+    left: 50%;
+    right: auto;
+    top: auto;
+    bottom: 15%;
+    transform: translateX(-50%) scale(0.65);
+    transform-origin: center center;
+  }
+}
+
+/* Tablet (portrait/landscape): a bit more room than phones, still
+   stacked above/below the text since Hero only goes side-by-side at lg. */
+@media (min-width: 640px) {
+  .hero-animation {
+    height: 70vh;
+    min-height: 420px;
+  }
+
+  .hand-container {
+    width: min(560px, 65vw);
+  }
+}
+
+/* Desktop/laptop and up: back to the original full-height, side-by-side
+   layout (Hero switches to flex-row at lg / 1024px). */
+@media (min-width: 1024px) {
+  .hero-animation {
+    height: 100vh;
+    min-height: 0;
+  }
+
+  .hand-container {
+    width: min(700px, 55vw);
+  }
+}
+
+/* 4K / large monitors: let the whole animation scale up a little so it
+   doesn't look small next to the larger hero text. */
+@media (min-width: 2560px) {
+  .hand-container {
+    width: min(900px, 45vw);
+  }
 }
 
 /* HAND */
@@ -545,19 +626,56 @@ function animateNodesToOrbit() {
 }
 
 /* MOBILE */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
+  .hand-container {
+    left: 50%;
+    right: auto;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: min(420px, 90vw);
+  }
+
   .atom-wrapper {
-    transform: scale(0.7);
+    left: auto;
+    top: auto;
     right: 2%;
     bottom: 18%;
+    transform: scale(0.7);
+  }
+} */
+
+@media (max-width: 480px) {
+  .hero-animation {
+    width: 100%;
+    height: 360px;
+    overflow: hidden;
+  }
+
+  .hand-container {
+    position: absolute;
+    left: 50%;
+    right: auto;
+    bottom: 5%;
+    transform: translateX(-50%);
+    width: min(340px, 92vw);
+  }
+
+  .atom-wrapper {
+    left: 50%;
+    right: auto;
+    top: auto;
+    /* right: -10%; */
+    bottom: 30%;
+    transform: translateX(-50%) scale(0.55);
+    transform-origin: center center;
   }
 }
 
-@media (max-width: 480px) {
+/* 4K / large monitors: scale the atom up a bit so it doesn't look tiny
+   inside the much bigger hand-container defined above. */
+@media (min-width: 2560px) {
   .atom-wrapper {
-    transform: scale(0.55);
-    right: -10%;
-    bottom: 15%;
+    transform: scale(1.15);
   }
 }
 </style>

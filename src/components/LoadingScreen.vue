@@ -15,7 +15,7 @@
         VT<span class="text-blue-500">.</span>
       </motion.div>
 
-      <div class="w-64 h-1 bg-slate-800 rounded-full overflow-hidden relative">
+      <div class="w-56 sm:w-64 max-w-[70vw] h-1 bg-slate-800 rounded-full overflow-hidden relative">
         <motion.div
           class="absolute top-0 left-0 h-full bg-blue-500 neon-box-blue"
           :initial="{ width: '0%' }"

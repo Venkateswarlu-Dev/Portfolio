@@ -25,12 +25,15 @@
         }"
       />
     </div>
-    <nav class="glass-card fixed w-full z-50 border-b-0 py-4 backdrop-blur-md">
-      <div class="container mx-auto px-6 flex justify-between items-center">
-        <div class="text-white font-orbitron font-bold tracking-widest text-xl neon-text-blue">
+    <nav class="glass-card fixed w-full z-50 border-b-0 backdrop-blur-md">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+        <a
+          href="#hero"
+          class="text-white font-orbitron font-bold tracking-widest text-xl neon-text-blue"
+        >
           VT<span class="text-blue-500">.</span>
-        </div>
-        <div class="hidden md:flex gap-8 font-orbitron text-sm">
+        </a>
+        <div class="hidden md:flex gap-6 lg:gap-8 font-orbitron text-sm">
           <a
             v-for="nav in navLinks"
             :key="nav.router"
@@ -39,7 +42,48 @@
             >{{ nav.name }}</a
           >
         </div>
+
+        <!-- Mobile hamburger toggle -->
+        <button
+          type="button"
+          class="md:hidden relative flex flex-col items-center justify-center w-9 h-9 gap-1.5"
+          @click="isMenuOpen = !isMenuOpen"
+          :aria-expanded="isMenuOpen"
+          aria-label="Toggle navigation menu"
+          aria-controls="mobile-nav-menu"
+        >
+          <span
+            class="block w-6 h-0.5 bg-linear-to-r from-blue-500 to-purple-500 transition-transform duration-300"
+            :class="isMenuOpen ? 'translate-y-2 rotate-45' : ''"
+          />
+          <span
+            class="block w-6 h-0.5 bg-linear-to-r from-blue-500 to-purple-500 transition-opacity duration-300"
+            :class="isMenuOpen ? 'opacity-0' : ''"
+          />
+          <span
+            class="block w-6 h-0.5 bg-linear-to-r from-blue-500 to-purple-500 transition-transform duration-300"
+            :class="isMenuOpen ? '-translate-y-2 -rotate-45' : ''"
+          />
+        </button>
       </div>
+
+      <!-- Mobile nav panel -->
+      <Transition name="mobile-nav">
+        <div
+          v-if="isMenuOpen"
+          id="mobile-nav-menu"
+          class="md:hidden border-t border-slate-800/60 px-6 py-6 flex flex-col gap-5 font-orbitron text-sm"
+        >
+          <a
+            v-for="nav in navLinks"
+            :key="nav.router"
+            :href="nav.router"
+            @click="closeMenu"
+            :class="`hover:text-${nav.color}-400 transition-colors`"
+            >{{ nav.name }}</a
+          >
+        </div>
+      </Transition>
     </nav>
     <main class="relative z-10">
       <Hero v-if="!isLoading" />
@@ -74,9 +118,14 @@ import Contact from "@/components/Contact.vue";
 import Footer from "@/components/Footer.vue";
 
 const isLoading = ref(true);
+const isMenuOpen = ref(false);
 
 const handleComplete = () => {
   isLoading.value = false;
+};
+
+const closeMenu = () => {
+  isMenuOpen.value = false;
 };
 
 const particles = Array.from({ length: 20 }, () => ({
@@ -125,5 +174,18 @@ const navLinks = [
     transform: translateY(-100vh) translateX(50px);
     opacity: 0;
   }
+}
+
+.mobile-nav-enter-active,
+.mobile-nav-leave-active {
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.mobile-nav-enter-from,
+.mobile-nav-leave-to {
+  opacity: 0;
+  transform: translateY(-8px);
 }
 </style>

@@ -129,7 +129,7 @@
 
     <!-- Scroll indicator -->
     <motion.div
-      class="absolute bottom-3 sm:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500"
+      class="scroll-indicator absolute bottom-3 sm:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500"
       :animate="{ y: [0, 8, 0] }"
       :transition="{ repeat: Infinity, duration: 2, ease: 'easeInOut' }"
     >
@@ -138,6 +138,58 @@
     </motion.div>
   </section>
 </template>
+
+<style scoped>
+/* Mobile/tablet hero sizing */
+@media (max-width: 1023px) {
+  #hero {
+    flex-direction: column;
+    min-height: 0;
+    height: auto;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding-top: 6rem;
+    padding-bottom: 1rem;
+  }
+
+  #hero > .relative.z-10 {
+    width: 100%;
+  }
+
+  .scroll-indicator {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    transform: none;
+    margin: 0 auto;
+    padding-top: 0.25rem;
+  }
+}
+
+@media (max-width: 639px) {
+  #hero .flex.flex-wrap.gap-3 {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  #hero .flex.flex-wrap.gap-3 > a {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  #hero .typing-line {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  #hero .typing-content {
+    max-width: 100%;
+  }
+}
+</style>
 
 <script setup>
 import CyberBackground from "./CyberBackground.vue";

@@ -1,19 +1,19 @@
 <template>
-  <section id="contact" class="py-24 relative">
-    <div class="container mx-auto px-6">
+  <section id="contact" class="py-12 md:py-16 relative">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <motion.div
         :initial="{ opacity: 0, y: 30 }"
         :whileInView="{ opacity: 1, y: 0 }"
         :viewport="{ once: true }"
         :transition="{ duration: 0.6 }"
       >
-        <h2 class="text-3xl md:text-5xl font-orbitron mb-16 flex items-center gap-4">
+        <h2 class="text-2xl sm:text-3xl md:text-5xl font-orbitron mb-8 md:mb-10 flex items-center gap-4">
           <span class="text-blue-500">06.</span> Contact
           <div class="h-px bg-slate-800 flex-grow ml-4"></div>
         </h2>
       </motion.div>
 
-      <div class="grid md:grid-cols-2 gap-16">
+      <div class="grid md:grid-cols-2 gap-10 md:gap-16">
         <motion.div
           :initial="{ opacity: 0, x: -30 }"
           :whileInView="{ opacity: 1, x: 0 }"
@@ -33,10 +33,10 @@
           <div class="space-y-6">
             <a
               href="mailto:tiruveedivenkatesh78@gmail.com"
-              class="flex items-center gap-4 text-slate-300 hover:text-blue-400 transition-colors group"
+              class="flex items-center gap-4 min-w-0 text-slate-300 hover:text-blue-400 transition-colors group"
             >
               <div
-                class="w-12 h-12 glass-card rounded flex items-center justify-center group-hover:neon-box-blue transition-all"
+                class="w-12 h-12 shrink-0 glass-card rounded flex items-center justify-center group-hover:neon-box-blue transition-all"
               >
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
@@ -47,16 +47,18 @@
                   ></path>
                 </svg>
               </div>
-              <span class="font-mono text-sm">venkateswarlu.tiruveedula.dev@gmail.com</span>
+              <span class="font-mono text-xs sm:text-sm break-all"
+                >venkateswarlu.tiruveedula.dev@gmail.com</span
+              >
             </a>
             <a
               href="https://www.linkedin.com/in/venkateswarlu-tiruveedula-327a95218"
               target="_blank"
               rel="noopener noreferrer"
-              class="flex items-center gap-4 text-slate-300 hover:text-purple-400 transition-colors group"
+              class="flex items-center gap-4 min-w-0 text-slate-300 hover:text-purple-400 transition-colors group"
             >
               <div
-                class="w-12 h-12 glass-card rounded flex items-center justify-center group-hover:neon-box-purple transition-all"
+                class="w-12 h-12 shrink-0 glass-card rounded flex items-center justify-center group-hover:neon-box-purple transition-all"
               >
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path
@@ -64,16 +66,16 @@
                   />
                 </svg>
               </div>
-              <span class="font-mono text-sm">Venkateswarlu Tiruveedula</span>
+              <span class="font-mono text-xs sm:text-sm break-all">Venkateswarlu Tiruveedula</span>
             </a>
             <a
               href="https://github.com/Venkateswarlu-Dev"
               target="_blank"
               rel="noopener noreferrer"
-              class="flex items-center gap-4 text-slate-300 hover:text-white transition-colors group"
+              class="flex items-center gap-4 min-w-0 text-slate-300 hover:text-white transition-colors group"
             >
               <div
-                class="w-12 h-12 glass-card rounded flex items-center justify-center group-hover:border-slate-500 transition-all"
+                class="w-12 h-12 shrink-0 glass-card rounded flex items-center justify-center group-hover:border-slate-500 transition-all"
               >
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path
@@ -81,7 +83,7 @@
                   />
                 </svg>
               </div>
-              <span class="font-mono text-sm">Venkateswarlu-Dev</span>
+              <span class="font-mono text-xs sm:text-sm break-all">Venkateswarlu-Dev</span>
             </a>
           </div>
         </motion.div>
@@ -91,7 +93,7 @@
           :whileInView="{ opacity: 1, x: 0 }"
           :viewport="{ once: true }"
           :transition="{ duration: 0.6, delay: 0.4 }"
-          class="glass-card p-8 rounded-xl flex items-center justify-center"
+          class="glass-card p-5 sm:p-8 rounded-xl flex items-center justify-center"
         >
           <div v-if="status && statusType === 'success'" class="text-center py-10">
             <div class="text-green-400 font-mono text-lg mb-3">{{ status }}</div>

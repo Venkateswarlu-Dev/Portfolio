@@ -1,19 +1,19 @@
 <template>
-  <section id="projects" class="py-24 relative">
-    <div class="container mx-auto px-6">
+  <section id="projects" class="py-12 md:py-16 relative">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <motion.div
         :initial="{ opacity: 0, y: 30 }"
         :whileInView="{ opacity: 1, y: 0 }"
         :viewport="{ once: true }"
         :transition="{ duration: 0.6 }"
       >
-        <h2 class="text-3xl md:text-5xl font-orbitron mb-16 flex items-center gap-4">
+        <h2 class="text-2xl sm:text-3xl md:text-5xl font-orbitron mb-8 md:mb-10 flex items-center gap-4">
           <span class="text-blue-500">05.</span> Projects
           <div class="h-px bg-slate-800 flex-grow ml-4"></div>
         </h2>
       </motion.div>
 
-      <div class="grid md:grid-cols-2 gap-8">
+      <div class="grid md:grid-cols-2 gap-6 md:gap-8">
         <motion.div
           v-for="(project, index) in projects"
           :key="index"
@@ -36,14 +36,14 @@
             class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
           ></div>
 
-          <div class="relative p-6 z-10">
+          <div class="relative p-4 sm:p-6 z-10">
             <a
               :href="project.link"
               target="_blank"
               rel="noopener noreferrer"
               class="inline-flex items-center gap-1 mb-4"
             >
-              <h3 class="text-2xl font-orbitron transition-colors group-hover/title:text-blue-400">
+              <h3 class="text-xl sm:text-2xl font-orbitron transition-colors group-hover/title:text-blue-400">
                 {{ project.title }}
               </h3>
               <Icon

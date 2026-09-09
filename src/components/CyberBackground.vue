@@ -37,10 +37,10 @@
     />
 
     <!-- Corner accents -->
-    <div class="absolute top-8 left-6 w-16 h-16 border-t-2 border-l-2 border-blue-500/50" />
-    <div class="absolute top-8 right-6 w-16 h-16 border-t-2 border-r-2 border-purple-500/50" />
-    <div class="absolute bottom-8 left-6 w-16 h-16 border-b-2 border-l-2 border-purple-500/50" />
-    <div class="absolute bottom-8 right-6 w-16 h-16 border-b-2 border-r-2 border-blue-500/50" />
+    <div class="absolute top-8 left-3 sm:left-6 w-16 h-16 border-t-2 border-l-2 border-blue-500/50" />
+    <div class="absolute top-8 right-3 sm:right-6 w-16 h-16 border-t-2 border-r-2 border-purple-500/50" />
+    <div class="absolute bottom-3 sm:bottom-8 left-3 sm:left-6 w-16 h-16 border-b-2 border-l-2 border-purple-500/50" />
+    <div class="absolute bottom-3 sm:bottom-8 right-3 sm:right-6 w-16 h-16 border-b-2 border-r-2 border-blue-500/50" />
 
     <!-- Floating data nodes -->
     <div
